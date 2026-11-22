@@ -1,125 +1,161 @@
 // ✏️ كل معلوماتك هنا. عدّل هذا الملف فقط وكل صفحات الموقع تتحدث تلقائياً.
 
 export const PROFILE = {
-  name: "عبد الملك الغامدي",
-  fullName: "عبد الملك علي الغامدي",
+  name: "عبدالملك الغامدي",
+  fullName: "عبدالملك علي الغامدي",
   nameEn: "Abdulmalik Ali Al-Ghamdi",
-  role: "مطوّر أنظمة ومحلل بيانات",
-  roleEn: "Software Systems & IT Specialist",
+  role: "خريج تقنية معلومات",
+  roleEn: "IT Graduate",
   intro:
-    "خريج تقنية معلومات من جامعة الباحة. أبني أنظمة ويب متكاملة بـ Node.js، وأصمم قواعد البيانات، وأحلل البيانات لأحوّلها إلى قرارات واضحة.",
-  location: "الرياض، المملكة العربية السعودية",
-  phone: "+966 50 051 2410",
-  email: "itbdamlk@gmail.com",
-  github: "", // ضع رابط حسابك في GitHub هنا ليظهر في الموقع
-  linkedin: "", // ضع رابط حسابك في LinkedIn هنا ليظهر في الموقع
-  cv: "/cv.pdf",
-  cvFileName: "Abdulmalik_Alghamdi_CV.pdf",
+    "أبدأ مسيرتي في الدعم الفني وتقنية المعلومات، وأتجه نحو الأمن السيبراني. أحب أفهم كيف تشتغل الأنظمة، وأحل مشاكلها، وأحميها.",
+  location: "بلجرشي، منطقة الباحة",
+  workPlace: "مستعد للعمل في الرياض",
+  email: "itbdalmlk@gmail.com",
+  phone: "", // اختياري: اكتب رقمك هنا إذا تبيه يظهر، مثال "+966 5x xxx xxxx"
+  github: "", // ضع رابط GitHub هنا ليظهر في الموقع
+  linkedin: "", // ضع رابط LinkedIn هنا ليظهر في الموقع
+  photo: "/me.jpg", // ارفع صورتك باسم me.jpg داخل مجلد public وتظهر تلقائياً
   available: true, // true = تظهر علامة "متاح للعمل"
 };
 
-export const SUMMARY =
-  "خريج تقنية معلومات يستهدف أدوار تطوير الأنظمة البرمجية وعمليات تقنية المعلومات، بخبرة عملية في تطوير الأنظمة الخلفية باستخدام Node.js وJavaScript. أتقن تصميم قواعد البيانات العلائقية وتكامل الأنظمة ونمذجة البيانات، ولدي معرفة عملية ببروتوكولات الشبكات والأنظمة الافتراضية ومبادئ أمن المعلومات. أعمل بمنهجية Agile، وأحلل مسارات العمل التشغيلية لأقدم حلولاً رقمية موثوقة.";
+// "من أنا" بكلام بسيط
+export const ABOUT = [
+  "تخرجت من جامعة الباحة في يناير 2026 ببكالوريوس تقنية المعلومات. خلال دراستي كنت القائد التقني لمشروع التخرج، وبعده تطوعت في الدعم الفني بمستشفى الأمير مشاري ببلجرشي.",
+  "هدفي الأول أشتغل أخصائي تقنية معلومات أو دعم فني، وأبني خبرة حقيقية في الميدان. بعدها أتعمق في الأمن السيبراني، وعندي اهتمام خاص بالحوكمة والمخاطر والامتثال (GRC)، يعني: كيف تتأكد الجهة إن أنظمتها ماشية على الأنظمة والمعايير، وكيف تتعامل مع المخاطر قبل ما تصير مشاكل.",
+  "خارج الشاشة: أحب الرياضة والجيم.",
+];
 
-// مجالات العمل التي تظهر في الصفحة الرئيسية
-export const DOMAINS = [
+// المسار المهني (بالترتيب)
+export const PATH = [
+  { step: "الآن", title: "أخصائي تقنية معلومات / دعم فني" },
+  { step: "بعدها", title: "الأمن السيبراني" },
+  { step: "اهتمام", title: "الحوكمة والمخاطر والامتثال (GRC)" },
+];
+
+// المهارات: كل مهارة مع شرح بسيط لغير المختصين
+export const SKILLS = [
+  { name: "الدعم الفني وحل المشاكل", en: "Technical Support", explain: "مساعدة الموظفين لما يتعطل جهاز أو برنامج، ومعرفة سبب المشكلة وحلها." },
+  { name: "الشبكات", en: "Networking", explain: "كيف تتصل الأجهزة ببعض وبالإنترنت، وكيف أكتشف سبب انقطاع الاتصال." },
+  { name: "قواعد البيانات", en: "SQL", explain: "تنظيم المعلومات وتخزينها بطريقة مرتبة، واستخراج المطلوب منها بسرعة." },
+  { name: "أمن المعلومات والتشفير", en: "Security & Encryption", explain: "حماية البيانات من الوصول غير المصرّح، مثل تشفير كلمات المرور." },
+  { name: "معايير الأمن السيبراني", en: "NCA ECC · ISO 27001", explain: "القواعد اللي تحددها الهيئة الوطنية للأمن السيبراني والمعيار الدولي ISO 27001 لحماية أنظمة الجهات." },
+  { name: "إدارة المشاريع", en: "Agile", explain: "تقسيم العمل لمراحل قصيرة ومتابعة الفريق حتى يتسلّم المشروع في وقته." },
+  { name: "البرمجة", en: "Node.js · JavaScript · Python", explain: "كتابة برامج ومواقع، وأتمتة المهام المتكررة." },
+];
+
+export const EXPERIENCE = [
   {
-    id: "dev",
-    title: "تطوير الأنظمة والتطبيقات",
-    text: "تطبيقات ويب متكاملة من الواجهة إلى الخادم، وربطها بالواجهات البرمجية مع معالجة الأخطاء وتتبع السجلات.",
-    skills: ["JavaScript", "Node.js", "RESTful APIs", "System Architecture", "Systems Integration", "SDLC"],
+    title: "متطوع دعم فني",
+    place: "مستشفى الأمير مشاري، بلجرشي",
+    date: "يناير – فبراير 2026",
   },
   {
-    id: "data",
-    title: "قواعد البيانات وتحليلها",
-    text: "تصميم مخططات العلاقات وتطبيعها، واستعلامات SQL، وتحويل البيانات التشغيلية إلى تقارير ولوحات متابعة.",
-    skills: ["SQL", "Database Design", "Data Modeling (ERD)", "Excel Analytics", "Reporting Dashboards"],
-  },
-  {
-    id: "infra",
-    title: "البنية التحتية وأمن المعلومات",
-    text: "تجهيز بيئات افتراضية لاختبار الأنظمة والشبكات، وتحليل سجلات الأحداث، وتطبيق مبادئ أمن المعلومات.",
-    skills: ["TCP/IP Networking", "Virtual Machines", "Information Security", "Log Analysis", "AWS Fundamentals"],
+    title: "عضو",
+    place: "نادي مطوري Google الطلابي (GDSC)، جامعة الباحة",
+    date: "خلال الدراسة",
   },
 ];
 
-export const SKILL_GROUPS = [
-  { title: "البرمجة والتطوير", items: ["JavaScript", "Node.js", "RESTful APIs", "System Architecture", "Systems Integration", "VS Code"] },
-  { title: "البيانات", items: ["SQL & Relational Databases", "Database Management", "Data Modeling (ERD)", "MS Excel (Analytics)"] },
-  { title: "البنية التحتية والأمن", items: ["IT Infrastructure", "TCP/IP Networking", "Virtual Machines", "Information Security", "Cloud Fundamentals (AWS)", "Log Analysis"] },
-  { title: "إدارة المشاريع", items: ["Agile & Scrum", "Project Planning (WBS)", "SDLC", "Technical Documentation"] },
-];
-
-export type ProjectCategory = "web" | "data";
-
-export interface Project {
-  id: string;
-  title: string;
-  subtitle: string;
-  category: ProjectCategory;
-  description: string;
-  points: string[];
-  tags: string[];
-  live?: string; // اتركه فارغاً إذا لا يوجد رابط
-  github?: string;
-  featured?: boolean;
-}
-
-// ➕ أضف مشروعاً جديداً = أضف عنصراً هنا. web يظهر في "المشاريع"، و data يظهر في "البيانات".
-export const PROJECTS: Project[] = [
-  {
-    id: "tarbi",
-    title: "منصة تربي",
-    subtitle: "Tarbi Integrated Digital System",
-    category: "web",
-    featured: true,
-    description: "نظام رقمي متكامل لتخطيط الرحلات والحجوزات، يؤتمت مسارات عمل المستخدمين من البداية إلى النهاية.",
-    points: [
-      "بناء النظام كاملاً بـ Node.js وJavaScript لتبسيط مسارات المستخدم وأتمتة العمليات.",
-      "تصميم مخططات قاعدة بيانات علائقية تضمن سلامة البيانات وسرعة الاستعلامات.",
-      "تحليل الأنظمة وتحويل المتطلبات الوظيفية إلى مكونات برمجية فعالة.",
-      "معالجة الأخطاء وربط الواجهات البرمجية وتتبع السجلات لرفع موثوقية الخادم.",
-      "إدارة مراحل التسليم بمنهجية Agile وهيكل تجزئة العمل (WBS).",
-    ],
-    tags: ["Node.js", "JavaScript", "SQL", "REST APIs", "Systems Analysis", "Agile"],
-    live: "",
-    github: "",
-  },
-  {
-    id: "db-lab",
-    title: "مختبر قواعد البيانات وعمليات تقنية المعلومات",
-    subtitle: "Database Systems & IT Operations Lab",
-    category: "data",
-    description: "نمذجة بيانات مؤسسية، وبيئات افتراضية لاختبار الأنظمة، وتحليل سجلات تشغيلية إلى تقارير.",
-    points: [
-      "نمذجة مخططات علاقات (ERD) معقدة وكتابة استعلامات SQL لإدارة بيانات المؤسسات.",
-      "إعداد أجهزة افتراضية لاختبار نشر الأنظمة وإعدادات الشبكة في بيئات معزولة.",
-      "تحليل سجلات أحداث الأنظمة ومعالجة البيانات التشغيلية بـ Excel لإنتاج ملخصات ولوحات تقارير.",
-    ],
-    tags: ["SQL", "ERD", "Virtual Machines", "Log Analysis", "Excel"],
-  },
-  {
-    id: "bi",
-    title: "لوحة مؤشرات الأداء والعمليات",
-    subtitle: "KPI & Operations Dashboard",
-    category: "data",
-    description: "تحليل مجموعات بيانات، ونمذجة العلاقات، ولوحة تفاعلية تبرز المقارنات والاتجاهات.",
-    points: [],
-    tags: ["Power BI", "SQL", "Excel Data Modeling"],
-  },
-];
-
-// السيرة: الأحداث بالترتيب من الأحدث للأقدم
 export const EDUCATION = [
-  { year: "2026", title: "بكالوريوس تقنية المعلومات", place: "جامعة الباحة، كلية علوم الحاسب وتقنية المعلومات", note: "المعدل 3.17 من 4.00" },
+  { date: "يناير 2026", title: "بكالوريوس تقنية المعلومات", place: "جامعة الباحة", note: "المعدل 3.17 من 4" },
 ];
 
 export const CERTIFICATIONS = [
-  { title: "Technical Project Management & Agile Methodologies", issuer: "IBM" },
-  { title: "Data Analysis & Information Processing Fundamentals", issuer: "IBM" },
+  { title: "Cybersecurity Threats, Vulnerabilities & Attacks", issuer: "أكاديمية طويق / سطر" },
+  { title: "Introduction to Cybersecurity", issuer: "أكاديمية طويق / سطر" },
+  { title: "Project Management Fundamentals", issuer: "IBM SkillsBuild" },
+  { title: "Data Analysis & Information Processing", issuer: "IBM SkillsBuild" },
 ];
 
-export const LANGUAGES = [
-  { name: "العربية", level: "اللغة الأم" },
-  { name: "English", level: "إجادة مهنية" },
+// 📄 نسخ السيرة الذاتية: ارفع كل ملف داخل public/cv بنفس الاسم، ويظهر زر تحميله تلقائياً.
+export const CVS = [
+  { id: "general", label: "السيرة العامة", file: "/cv/general.pdf", primary: true },
+  { id: "arabic", label: "النسخة العربية", file: "/cv/arabic.pdf" },
+  { id: "it-ops", label: "تقنية المعلومات والدعم الفني", file: "/cv/it-operations.pdf" },
+  { id: "cyber", label: "الأمن السيبراني", file: "/cv/cybersecurity.pdf" },
+  { id: "grc", label: "الحوكمة والمخاطر والامتثال", file: "/cv/grc.pdf" },
+  { id: "pm", label: "إدارة المشاريع", file: "/cv/project-management.pdf" },
+  { id: "ai", label: "الذكاء الاصطناعي", file: "/cv/ai.pdf" },
+  { id: "data", label: "تحليل البيانات", file: "/cv/data-analysis.pdf" },
 ];
+
+export type ProjectStatus = "done" | "wip";
+
+export interface Project {
+  slug: string; // يصير رابط صفحة المشروع: /projects/slug
+  title: string;
+  titleEn: string;
+  status: ProjectStatus;
+  summary: string; // سطر أو سطرين بكلام بسيط
+  problem: string; // وش المشكلة اللي يحلها
+  role?: string; // دوري في المشروع
+  did: string[]; // وش سويت
+  extra?: { title: string; points: string[] }; // قسم إضافي اختياري
+  tags: string[];
+  live?: string;
+  github?: string;
+}
+
+// ➕ مشروع جديد = أضف عنصراً هنا، وتنشأ له صفحة خاصة تلقائياً.
+export const PROJECTS: Project[] = [
+  {
+    slug: "tarbi",
+    title: "تربي",
+    titleEn: "Tarbi",
+    status: "done",
+    summary: "منصة تساعد السائح يخطط رحلاته في مدن السعودية. مشروع تخرجي.",
+    problem: "السائح يحتاج مكان واحد يرتب فيه رحلته بين مدن المملكة بدل ما يدوّر في أكثر من مكان.",
+    role: "القائد التقني لفريق من 5 أشخاص",
+    did: [
+      "قدت الجانب التقني للفريق ووزعت المهام.",
+      "صممت قاعدة البيانات (المكان اللي تُحفظ فيه بيانات المستخدمين والرحلات) وربطتها بالموقع.",
+      "نوعين من الحسابات: حساب للسائح، وحساب للمدير يدير المحتوى.",
+    ],
+    extra: {
+      title: "مراجعة أمنية بعد التسليم",
+      points: [
+        "بعد تسليم المشروع راجعته أمنياً بنفسي عشان أتعلم وين ممكن يكون ضعيف.",
+        "لقيت كلمات مرور محفوظة بدون تشفير، يعني لو أحد وصل لقاعدة البيانات يقدر يقرأها.",
+        "ولقيت نقص في التحقق من الصلاحيات، يعني بعض الصفحات ما تتأكد كفاية إن المستخدم مسموح له يدخلها.",
+        "وثّقت كل ثغرة وطريقة حلها.",
+      ],
+    },
+    tags: ["Node.js", "JavaScript", "SQL", "قيادة فريق", "مراجعة أمنية"],
+  },
+  {
+    slug: "jarvis",
+    title: "جارفس",
+    titleEn: "Jarvis",
+    status: "wip",
+    summary: "مساعد ذكي تكلمه بصوتك، بالعربي أو الإنجليزي، ويتحكم بجهازي.",
+    problem: "بدل ما أسوي المهام اليومية على الكمبيوتر بيدي، أطلبها بصوتي.",
+    did: [
+      "يفهم الأوامر الصوتية بالعربي والإنجليزي.",
+      "يفتح البرامج والألعاب.",
+      "يشغّل الأغاني من Spotify.",
+      "يرتّب الملفات.",
+      "يتذكرني ويتذكر تفضيلاتي.",
+      "له شخصية كرتونية ثلاثية الأبعاد تتحرك على الشاشة.",
+    ],
+    tags: ["ذكاء اصطناعي", "أوامر صوتية", "أتمتة"],
+  },
+  {
+    slug: "mizan",
+    title: "ميزان",
+    titleEn: "Mizan",
+    status: "wip",
+    summary: "منصة تساعد الشركات تقيس مدى التزامها بمعايير الأمن السيبراني السعودية، وتسجّل مخاطرها.",
+    problem:
+      "الهيئة الوطنية للأمن السيبراني (NCA) عندها ضوابط لازم الجهات تلتزم فيها. كثير من الشركات ما تعرف وين هي من هالضوابط بالضبط.",
+    did: [
+      "تقييم مدى الالتزام بالضوابط الأساسية للأمن السيبراني (NCA ECC).",
+      "سجل مخاطر: قائمة بالمخاطر المحتملة، وش احتمالها، ووش تأثيرها.",
+    ],
+    tags: ["GRC", "NCA ECC", "إدارة المخاطر"],
+  },
+];
+
+export const STATUS_LABEL: Record<ProjectStatus, string> = {
+  done: "مكتمل",
+  wip: "قيد التطوير",
+};

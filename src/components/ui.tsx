@@ -24,7 +24,7 @@ export function SectionHeading({ title, lead }: { title: string; lead?: string }
 
 export function Tag({ children }: { children: ReactNode }) {
   return (
-    <span dir="ltr" className="inline-block rounded-md border border-line bg-ink/60 px-2.5 py-1 text-[13px] leading-none text-fg/85">
+    <span dir="auto" className="inline-block rounded-md border border-line bg-ink/60 px-2.5 py-1 text-[13px] leading-tight text-fg/85">
       {children}
     </span>
   );

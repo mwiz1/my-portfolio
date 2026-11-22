@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Code2, BarChart3, MessageSquare, FileText } from "lucide-react";
+import { Home, Code2, FileText, MessageSquare, Mail } from "lucide-react";
 import { PROFILE } from "@/lib/config";
 
 const navItems = [
-  { label: "الرئيسية", href: "/", icon: Home },
-  { label: "المشاريع", href: "/projects", icon: Code2 },
-  { label: "البيانات", href: "/analytics", icon: BarChart3 },
-  { label: "السيرة", href: "/resume", icon: FileText },
-  { label: "صراحة", href: "/feedback", icon: MessageSquare },
+  { label: "الرئيسية", full: "الرئيسية", href: "/", icon: Home },
+  { label: "المشاريع", full: "مشاريعي", href: "/projects", icon: Code2 },
+  { label: "السيرة", full: "السيرة الذاتية", href: "/resume", icon: FileText },
+  { label: "صراحة", full: "صندوق الصراحة", href: "/feedback", icon: MessageSquare },
+  { label: "تواصل", full: "تواصل معي", href: "/#contact", icon: Mail },
 ];
+
+const isActiveFor = (pathname: string, href: string) =>
+  href === "/" ? pathname === "/" : href.startsWith("/#") ? false : pathname.startsWith(href);
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -27,7 +30,7 @@ export default function Navbar() {
           <nav aria-label="القائمة الرئيسية">
             <ul className="flex items-center gap-1">
               {navItems.slice(1).map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = isActiveFor(pathname, item.href);
                 return (
                   <li key={item.href}>
                     <Link
@@ -37,7 +40,7 @@ export default function Navbar() {
                         isActive ? "text-cyan" : "text-muted hover:text-fg"
                       }`}
                     >
-                      {item.label === "السيرة" ? "السيرة الذاتية" : item.label === "صراحة" ? "صندوق الصراحة" : item.label}
+                      {item.full}
                       {isActive && <span className="absolute inset-x-4 -bottom-[17px] h-0.5 rounded-full bg-cyan" />}
                     </Link>
                   </li>
@@ -56,7 +59,7 @@ export default function Navbar() {
         <ul className="mx-auto grid max-w-md grid-cols-5">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href;
+            const isActive = isActiveFor(pathname, item.href);
             return (
               <li key={item.href}>
                 <Link

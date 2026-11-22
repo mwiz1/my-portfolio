@@ -1,105 +1,86 @@
-import { Download, MapPin, Mail, Phone } from "lucide-react";
-import { Container, SectionHeading, Tag } from "@/components/ui";
-import { PROFILE, SUMMARY, SKILL_GROUPS, PROJECTS, EDUCATION, CERTIFICATIONS, LANGUAGES } from "@/lib/config";
+import { Download, FileText } from "lucide-react";
+import { Container, PageHeader, SectionHeading } from "@/components/ui";
+import { CVS, EDUCATION, EXPERIENCE, CERTIFICATIONS, SKILLS, PROFILE } from "@/lib/config";
+import { publicFileExists } from "@/lib/files";
+
+export const metadata = { title: "السيرة الذاتية" };
 
 export default function ResumePage() {
+  const available = CVS.filter((c) => publicFileExists(c.file));
+
   return (
     <Container className="max-w-4xl">
-      {/* رأس السيرة */}
-      <header className="flex flex-col gap-8 border-b border-line pb-10 pt-10 md:flex-row md:items-end md:justify-between md:pt-20">
-        <div>
-          <h1 className="font-kufi text-4xl font-semibold leading-tight text-fg md:text-5xl">{PROFILE.fullName}</h1>
-          <p dir="ltr" className="mt-2 text-right text-muted">{PROFILE.nameEn}</p>
-          <p className="mt-3 font-kufi text-xl text-sand">{PROFILE.role}</p>
-          <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-fg/75">
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-sand" aria-hidden />{PROFILE.location}</li>
-            <li><a href={`tel:${PROFILE.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 hover:text-cyan"><Phone className="h-4 w-4 text-sand" aria-hidden /><span dir="ltr">{PROFILE.phone}</span></a></li>
-            <li><a href={`mailto:${PROFILE.email}`} className="flex items-center gap-2 hover:text-cyan"><Mail className="h-4 w-4 text-sand" aria-hidden /><span dir="ltr">{PROFILE.email}</span></a></li>
-          </ul>
-        </div>
-        <a
-          href={PROFILE.cv}
-          download={PROFILE.cvFileName}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan px-6 py-3.5 font-semibold text-ink hover:bg-[#6BDDE9]"
-        >
-          <Download className="h-4 w-4" aria-hidden /> تحميل السيرة PDF
-        </a>
-      </header>
+      <PageHeader
+        title="السيرة الذاتية"
+        lead="عندي أكثر من نسخة، كل وحدة مركّزة على مجال. اختر النسخة اللي تناسب الوظيفة."
+      />
 
-      <section className="py-12">
-        <SectionHeading title="نبذة مهنية" />
-        <p className="max-w-3xl text-lg leading-loose text-fg/85">{SUMMARY}</p>
-      </section>
-
-      <section className="py-12">
-        <SectionHeading title="المهارات" />
-        <div className="grid gap-8 sm:grid-cols-2">
-          {SKILL_GROUPS.map((g) => (
-            <div key={g.title}>
-              <h3 className="mb-3 font-semibold text-sand">{g.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {g.items.map((s) => (
-                  <Tag key={s}>{s}</Tag>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-12">
-        <SectionHeading title="الخبرة العملية والمشاريع" />
-        <div className="space-y-10">
-          {PROJECTS.filter((p) => p.points.length > 0).map((p) => (
-            <article key={p.id} className="border-r-2 border-cyan/60 pr-5">
-              <h3 className="font-kufi text-2xl font-semibold text-fg">{p.title}</h3>
-              <p dir="ltr" className="text-right text-sm text-muted">{p.subtitle}</p>
-              <ul className="mt-4 space-y-2.5 text-fg/80">
-                {p.points.map((pt) => (
-                  <li key={pt} className="flex gap-3">
-                    <span className="mt-[0.75em] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="grid gap-12 py-12 pb-20 md:grid-cols-3">
-        <div>
-          <SectionHeading title="التعليم" />
-          {EDUCATION.map((e) => (
-            <div key={e.title}>
-              <p className="font-kufi text-2xl text-sand">{e.year}</p>
-              <h3 className="font-semibold text-fg">{e.title}</h3>
-              <p className="text-sm text-fg/75">{e.place}</p>
-              <p className="mt-1 text-sm text-muted">{e.note}</p>
-            </div>
-          ))}
-        </div>
-        <div>
-          <SectionHeading title="الشهادات" />
-          <ul className="space-y-4">
-            {CERTIFICATIONS.map((c) => (
-              <li key={c.title}>
-                <p dir="ltr" className="text-left text-fg">{c.title}</p>
-                <p className="text-sm text-sand">{c.issuer}</p>
+      <section className="pb-12">
+        {available.length > 0 ? (
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {available.map((c) => (
+              <li key={c.id}>
+                <a
+                  href={c.file}
+                  download
+                  className={`flex items-center justify-between gap-4 rounded-xl border p-5 transition-colors ${
+                    c.primary ? "border-cyan/60 bg-cyan/10 hover:bg-cyan/15" : "border-line bg-panel/80 hover:border-cyan/50"
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <FileText className={`h-5 w-5 ${c.primary ? "text-cyan" : "text-sand"}`} aria-hidden />
+                    <span className="font-medium text-fg">{c.label}</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 text-sm text-cyan">
+                    <Download className="h-4 w-4" aria-hidden /> PDF
+                  </span>
+                </a>
               </li>
             ))}
           </ul>
-        </div>
-        <div>
-          <SectionHeading title="اللغات" />
-          <ul className="space-y-3">
-            {LANGUAGES.map((l) => (
-              <li key={l.name} className="flex justify-between gap-4 border-b border-line pb-3">
-                <span className="text-fg">{l.name}</span>
-                <span className="text-sm text-muted">{l.level}</span>
-              </li>
+        ) : (
+          <p className="text-muted">
+            السيرة الذاتية غير متاحة حالياً. تقدر تطلبها على <a href={`mailto:${PROFILE.email}`} className="text-cyan" dir="ltr">{PROFILE.email}</a>
+          </p>
+        )}
+      </section>
+
+      <section className="border-t border-line py-12">
+        <SectionHeading title="باختصار" />
+        <div className="grid gap-10 md:grid-cols-2">
+          <div>
+            <h3 className="mb-3 font-semibold text-sand">التعليم</h3>
+            {EDUCATION.map((e) => (
+              <p key={e.title} className="text-fg/85">
+                {e.title}، {e.place} ({e.date})، {e.note}
+              </p>
             ))}
-          </ul>
+            <h3 className="mb-3 mt-8 font-semibold text-sand">الخبرة والأنشطة</h3>
+            <ul className="space-y-2 text-fg/85">
+              {EXPERIENCE.map((e) => (
+                <li key={e.place}>
+                  {e.title}، {e.place} <span className="text-sm text-muted">({e.date})</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-3 font-semibold text-sand">المهارات</h3>
+            <ul className="space-y-1.5 text-fg/85">
+              {SKILLS.map((s) => (
+                <li key={s.name}>{s.name}</li>
+              ))}
+            </ul>
+            <h3 className="mb-3 mt-8 font-semibold text-sand">الشهادات</h3>
+            <ul className="space-y-2">
+              {CERTIFICATIONS.map((c) => (
+                <li key={c.title}>
+                  <span dir="ltr" className="block text-left text-fg/85">{c.title}</span>
+                  <span className="text-sm text-muted">{c.issuer}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     </Container>

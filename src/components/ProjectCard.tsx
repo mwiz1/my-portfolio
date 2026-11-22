@@ -1,56 +1,42 @@
-import { ExternalLink, Github } from "lucide-react";
-import type { Project } from "@/lib/config";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { STATUS_LABEL, type Project } from "@/lib/config";
 import { Tag } from "./ui";
 
-export default function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
-  const p = project;
+export function StatusBadge({ status }: { status: Project["status"] }) {
   return (
-    <article
-      className={`rounded-2xl border border-line bg-panel/80 backdrop-blur-md ${
-        large ? "p-6 md:p-10" : "p-6 md:p-8"
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+        status === "done" ? "bg-emerald-400/10 text-emerald-300" : "bg-sand/10 text-sand"
       }`}
     >
-      <div className={large ? "md:grid md:grid-cols-[1.1fr_1fr] md:gap-12" : ""}>
-        <div>
-          <p dir="ltr" className="text-right text-sm text-sand">{p.subtitle}</p>
-          <h3 className={`mt-1 font-kufi font-semibold leading-snug text-fg ${large ? "text-3xl md:text-4xl" : "text-2xl"}`}>
-            {p.title}
-          </h3>
-          <p className="mt-4 text-fg/80">{p.description}</p>
+      <span className={`h-1.5 w-1.5 rounded-full ${status === "done" ? "bg-emerald-300" : "bg-sand"}`} aria-hidden />
+      {STATUS_LABEL[status]}
+    </span>
+  );
+}
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            {p.tags.map((t) => (
-              <Tag key={t}>{t}</Tag>
-            ))}
-          </div>
-
-          {(p.live || p.github) && (
-            <div className="mt-6 flex flex-wrap gap-3">
-              {p.live && (
-                <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-cyan/10 px-4 py-2 text-sm font-medium text-cyan hover:bg-cyan/20">
-                  <ExternalLink className="h-4 w-4" aria-hidden /> افتح المشروع
-                </a>
-              )}
-              {p.github && (
-                <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2 text-sm text-fg hover:border-cyan/60">
-                  <Github className="h-4 w-4" aria-hidden /> الكود على GitHub
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-
-        {p.points.length > 0 && (
-          <ul className={`space-y-3 text-[15px] text-fg/75 ${large ? "mt-8 md:mt-0" : "mt-6"}`}>
-            {p.points.map((pt) => (
-              <li key={pt} className="flex gap-3">
-                <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
-                <span>{pt}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+export default function ProjectCard({ project: p }: { project: Project }) {
+  return (
+    <Link
+      href={`/projects/${p.slug}`}
+      className="group flex h-full flex-col rounded-2xl border border-line bg-panel/80 p-6 backdrop-blur-md transition-colors hover:border-cyan/50 md:p-8"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <StatusBadge status={p.status} />
+        <span dir="ltr" className="text-sm text-muted">{p.titleEn}</span>
       </div>
-    </article>
+      <h3 className="mt-4 font-kufi text-3xl font-semibold text-fg">{p.title}</h3>
+      <p className="mt-3 flex-1 text-fg/80">{p.summary}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {p.tags.slice(0, 3).map((t) => (
+          <Tag key={t}>{t}</Tag>
+        ))}
+      </div>
+      <span className="mt-6 inline-flex items-center gap-2 font-medium text-cyan">
+        تفاصيل المشروع
+        <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden />
+      </span>
+    </Link>
   );
 }
