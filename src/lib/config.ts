@@ -1,63 +1,161 @@
-// ✏️ Edit this file only — every component reads from here.
+// ✏️ كل معلوماتك هنا. عدّل هذا الملف فقط وكل صفحات الموقع تتحدث تلقائياً.
+
 export const PROFILE = {
-  name: "Your Name",
-  title: "Information Technology Specialist",
-  subtitle: "Software & Systems Developer",
-  github: "https://github.com/your-username",
-  linkedin: "https://www.linkedin.com/in/your-username",
-  cv: "/cv.pdf", // put your PDF at public/cv.pdf
+  name: "عبدالملك الغامدي",
+  fullName: "عبدالملك علي الغامدي",
+  nameEn: "Abdulmalik Ali Al-Ghamdi",
+  role: "خريج تقنية معلومات",
+  roleEn: "IT Graduate",
+  intro:
+    "أبدأ مسيرتي في الدعم الفني وتقنية المعلومات، وأتجه نحو الأمن السيبراني. أحب أفهم كيف تشتغل الأنظمة، وأحل مشاكلها، وأحميها.",
+  location: "بلجرشي، منطقة الباحة",
+  workPlace: "مستعد للعمل في الرياض",
+  email: "itbdalmlk@gmail.com",
+  phone: "", // اختياري: اكتب رقمك هنا إذا تبيه يظهر، مثال "+966 5x xxx xxxx"
+  github: "", // ضع رابط GitHub هنا ليظهر في الموقع
+  linkedin: "", // ضع رابط LinkedIn هنا ليظهر في الموقع
+  photo: "/me.jpg", // ارفع صورتك باسم me.jpg داخل مجلد public وتظهر تلقائياً
+  available: true, // true = تظهر علامة "متاح للعمل"
 };
 
-export type ProjectCategory = "web" | "data";
+// "من أنا" بكلام بسيط
+export const ABOUT = [
+  "تخرجت من جامعة الباحة في يناير 2026 ببكالوريوس تقنية المعلومات. خلال دراستي كنت القائد التقني لمشروع التخرج، وبعده تطوعت في الدعم الفني بمستشفى الأمير مشاري ببلجرشي.",
+  "هدفي الأول أشتغل أخصائي تقنية معلومات أو دعم فني، وأبني خبرة حقيقية في الميدان. بعدها أتعمق في الأمن السيبراني، وعندي اهتمام خاص بالحوكمة والمخاطر والامتثال (GRC)، يعني: كيف تتأكد الجهة إن أنظمتها ماشية على الأنظمة والمعايير، وكيف تتعامل مع المخاطر قبل ما تصير مشاكل.",
+  "خارج الشاشة: أحب الرياضة والجيم.",
+];
+
+// المسار المهني (بالترتيب)
+export const PATH = [
+  { step: "الآن", title: "أخصائي تقنية معلومات / دعم فني" },
+  { step: "بعدها", title: "الأمن السيبراني" },
+  { step: "اهتمام", title: "الحوكمة والمخاطر والامتثال (GRC)" },
+];
+
+// المهارات: كل مهارة مع شرح بسيط لغير المختصين
+export const SKILLS = [
+  { name: "الدعم الفني وحل المشاكل", en: "Technical Support", explain: "مساعدة الموظفين لما يتعطل جهاز أو برنامج، ومعرفة سبب المشكلة وحلها." },
+  { name: "الشبكات", en: "Networking", explain: "كيف تتصل الأجهزة ببعض وبالإنترنت، وكيف أكتشف سبب انقطاع الاتصال." },
+  { name: "قواعد البيانات", en: "SQL", explain: "تنظيم المعلومات وتخزينها بطريقة مرتبة، واستخراج المطلوب منها بسرعة." },
+  { name: "أمن المعلومات والتشفير", en: "Security & Encryption", explain: "حماية البيانات من الوصول غير المصرّح، مثل تشفير كلمات المرور." },
+  { name: "معايير الأمن السيبراني", en: "NCA ECC · ISO 27001", explain: "القواعد اللي تحددها الهيئة الوطنية للأمن السيبراني والمعيار الدولي ISO 27001 لحماية أنظمة الجهات." },
+  { name: "إدارة المشاريع", en: "Agile", explain: "تقسيم العمل لمراحل قصيرة ومتابعة الفريق حتى يتسلّم المشروع في وقته." },
+  { name: "البرمجة", en: "Node.js · JavaScript · Python", explain: "كتابة برامج ومواقع، وأتمتة المهام المتكررة." },
+];
+
+export const EXPERIENCE = [
+  {
+    title: "متطوع دعم فني",
+    place: "مستشفى الأمير مشاري، بلجرشي",
+    date: "يناير – فبراير 2026",
+  },
+  {
+    title: "عضو",
+    place: "نادي مطوري Google الطلابي (GDSC)، جامعة الباحة",
+    date: "خلال الدراسة",
+  },
+];
+
+export const EDUCATION = [
+  { date: "يناير 2026", title: "بكالوريوس تقنية المعلومات", place: "جامعة الباحة", note: "المعدل 3.17 من 4" },
+];
+
+export const CERTIFICATIONS = [
+  { title: "Cybersecurity Threats, Vulnerabilities & Attacks", issuer: "أكاديمية طويق / سطر" },
+  { title: "Introduction to Cybersecurity", issuer: "أكاديمية طويق / سطر" },
+  { title: "Project Management Fundamentals", issuer: "IBM SkillsBuild" },
+  { title: "Data Analysis & Information Processing", issuer: "IBM SkillsBuild" },
+];
+
+// 📄 نسخ السيرة الذاتية: ارفع كل ملف داخل public/cv بنفس الاسم، ويظهر زر تحميله تلقائياً.
+export const CVS = [
+  { id: "general", label: "السيرة العامة", file: "/cv/general.pdf", primary: true },
+  { id: "arabic", label: "النسخة العربية", file: "/cv/arabic.pdf" },
+  { id: "it-ops", label: "تقنية المعلومات والدعم الفني", file: "/cv/it-operations.pdf" },
+  { id: "cyber", label: "الأمن السيبراني", file: "/cv/cybersecurity.pdf" },
+  { id: "grc", label: "الحوكمة والمخاطر والامتثال", file: "/cv/grc.pdf" },
+  { id: "pm", label: "إدارة المشاريع", file: "/cv/project-management.pdf" },
+  { id: "ai", label: "الذكاء الاصطناعي", file: "/cv/ai.pdf" },
+  { id: "data", label: "تحليل البيانات", file: "/cv/data-analysis.pdf" },
+];
+
+export type ProjectStatus = "done" | "wip";
 
 export interface Project {
-  id: string;
+  slug: string; // يصير رابط صفحة المشروع: /projects/slug
   title: string;
-  titleAr?: string;
-  category: ProjectCategory;
-  description: string;
+  titleEn: string;
+  status: ProjectStatus;
+  summary: string; // سطر أو سطرين بكلام بسيط
+  problem: string; // وش المشكلة اللي يحلها
+  role?: string; // دوري في المشروع
+  did: string[]; // وش سويت
+  extra?: { title: string; points: string[] }; // قسم إضافي اختياري
   tags: string[];
   live?: string;
   github?: string;
-  featured?: boolean;
 }
 
-// ➕ Add a new project = add one object here. It appears in the grid automatically.
+// ➕ مشروع جديد = أضف عنصراً هنا، وتنشأ له صفحة خاصة تلقائياً.
 export const PROJECTS: Project[] = [
   {
-    id: "trippie",
-    title: "Trippie",
-    titleAr: "تربي",
-    category: "web",
-    featured: true,
-    description:
-      "End-to-end digital tourism and booking engine with custom itinerary planning and workflow automation.",
-    tags: ["Node.js", "SQL / Database Design", "Systems Analysis", "REST APIs"],
-    live: "#",
-    github: "#",
+    slug: "tarbi",
+    title: "تربي",
+    titleEn: "Tarbi",
+    status: "done",
+    summary: "منصة تساعد السائح يخطط رحلاته في مدن السعودية. مشروع تخرجي.",
+    problem: "السائح يحتاج مكان واحد يرتب فيه رحلته بين مدن المملكة بدل ما يدوّر في أكثر من مكان.",
+    role: "القائد التقني لفريق من 5 أشخاص",
+    did: [
+      "قدت الجانب التقني للفريق ووزعت المهام.",
+      "صممت قاعدة البيانات (المكان اللي تُحفظ فيه بيانات المستخدمين والرحلات) وربطتها بالموقع.",
+      "نوعين من الحسابات: حساب للسائح، وحساب للمدير يدير المحتوى.",
+    ],
+    extra: {
+      title: "مراجعة أمنية بعد التسليم",
+      points: [
+        "بعد تسليم المشروع راجعته أمنياً بنفسي عشان أتعلم وين ممكن يكون ضعيف.",
+        "لقيت كلمات مرور محفوظة بدون تشفير، يعني لو أحد وصل لقاعدة البيانات يقدر يقرأها.",
+        "ولقيت نقص في التحقق من الصلاحيات، يعني بعض الصفحات ما تتأكد كفاية إن المستخدم مسموح له يدخلها.",
+        "وثّقت كل ثغرة وطريقة حلها.",
+      ],
+    },
+    tags: ["Node.js", "JavaScript", "SQL", "قيادة فريق", "مراجعة أمنية"],
   },
   {
-    id: "bi-dashboards",
-    title: "Data Analytics & BI Dashboards",
-    category: "data",
-    description:
-      "Interactive statistical analysis, KPI tracking, and automated data processing.",
-    tags: ["Power BI", "Python", "SQL"],
-    live: "#",
-    github: "#",
+    slug: "jarvis",
+    title: "جارفس",
+    titleEn: "Jarvis",
+    status: "wip",
+    summary: "مساعد ذكي تكلمه بصوتك، بالعربي أو الإنجليزي، ويتحكم بجهازي.",
+    problem: "بدل ما أسوي المهام اليومية على الكمبيوتر بيدي، أطلبها بصوتي.",
+    did: [
+      "يفهم الأوامر الصوتية بالعربي والإنجليزي.",
+      "يفتح البرامج والألعاب.",
+      "يشغّل الأغاني من Spotify.",
+      "يرتّب الملفات.",
+      "يتذكرني ويتذكر تفضيلاتي.",
+      "له شخصية كرتونية ثلاثية الأبعاد تتحرك على الشاشة.",
+    ],
+    tags: ["ذكاء اصطناعي", "أوامر صوتية", "أتمتة"],
   },
   {
-    id: "slot-1",
-    title: "Next project",
-    category: "web",
-    description: "Graduation or personal project. Add title, description and links in src/lib/config.ts.",
-    tags: ["Add stack"],
-  },
-  {
-    id: "slot-2",
-    title: "Next data project",
-    category: "data",
-    description: "Another analysis, dashboard or notebook goes here.",
-    tags: ["Add stack"],
+    slug: "mizan",
+    title: "ميزان",
+    titleEn: "Mizan",
+    status: "wip",
+    summary: "منصة تساعد الشركات تقيس مدى التزامها بمعايير الأمن السيبراني السعودية، وتسجّل مخاطرها.",
+    problem:
+      "الهيئة الوطنية للأمن السيبراني (NCA) عندها ضوابط لازم الجهات تلتزم فيها. كثير من الشركات ما تعرف وين هي من هالضوابط بالضبط.",
+    did: [
+      "تقييم مدى الالتزام بالضوابط الأساسية للأمن السيبراني (NCA ECC).",
+      "سجل مخاطر: قائمة بالمخاطر المحتملة، وش احتمالها، ووش تأثيرها.",
+    ],
+    tags: ["GRC", "NCA ECC", "إدارة المخاطر"],
   },
 ];
+
+export const STATUS_LABEL: Record<ProjectStatus, string> = {
+  done: "مكتمل",
+  wip: "قيد التطوير",
+};

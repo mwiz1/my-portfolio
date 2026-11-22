@@ -1,66 +1,42 @@
-import { ExternalLink, Github, Layers } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { STATUS_LABEL, type Project } from "@/lib/config";
+import { Tag } from "./ui";
 
-interface ProjectCardProps {
-  title: string;
-  category: string;
-  description: string;
-  tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-  isHero?: boolean;
-}
-
-export default function ProjectCard({
-  title,
-  category,
-  description,
-  tags,
-  demoUrl,
-  githubUrl,
-  isHero = false,
-}: ProjectCardProps) {
+export function StatusBadge({ status }: { status: Project["status"] }) {
   return (
-    <div
-      className={`group relative rounded-2xl bg-[#0f172a]/70 border border-slate-800 p-6 backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-950/20 flex flex-col justify-between ${
-        isHero ? "md:col-span-2 bg-gradient-to-br from-[#0f172a] to-[#131d31]" : ""
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+        status === "done" ? "bg-emerald-400/10 text-emerald-300" : "bg-sand/10 text-sand"
       }`}
     >
-      <div>
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-mono text-cyan-400 tracking-wider uppercase flex items-center gap-1.5">
-            <Layers className="w-3.5 h-3.5" />
-            {category}
-          </span>
-          <div className="flex items-center gap-3">
-            {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-            {demoUrl && (
-              <a href={demoUrl} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
-          </div>
-        </div>
+      <span className={`h-1.5 w-1.5 rounded-full ${status === "done" ? "bg-emerald-300" : "bg-sand"}`} aria-hidden />
+      {STATUS_LABEL[status]}
+    </span>
+  );
+}
 
-        <h4 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-          {title}
-        </h4>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">{description}</p>
+export default function ProjectCard({ project: p }: { project: Project }) {
+  return (
+    <Link
+      href={`/projects/${p.slug}`}
+      className="group flex h-full flex-col rounded-2xl border border-line bg-panel/80 p-6 backdrop-blur-md transition-colors hover:border-cyan/50 md:p-8"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <StatusBadge status={p.status} />
+        <span dir="ltr" className="text-sm text-muted">{p.titleEn}</span>
       </div>
-
-      <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-800/80">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700/50"
-          >
-            {tag}
-          </span>
+      <h3 className="mt-4 font-kufi text-3xl font-semibold text-fg">{p.title}</h3>
+      <p className="mt-3 flex-1 text-fg/80">{p.summary}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {p.tags.slice(0, 3).map((t) => (
+          <Tag key={t}>{t}</Tag>
         ))}
       </div>
-    </div>
+      <span className="mt-6 inline-flex items-center gap-2 font-medium text-cyan">
+        تفاصيل المشروع
+        <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden />
+      </span>
+    </Link>
   );
 }
