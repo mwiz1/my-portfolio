@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+// 🎨 ألوان وخطوط الموقع
 const config: Config = {
   darkMode: "class",
   content: [
@@ -10,24 +11,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cyber: {
-          bg: "#050811",
-          card: "#0c1324",
-          border: "#1e293b",
-          cyan: "#06b6d4",
-          violet: "#8b5cf6",
-        },
+        ink: "#0B1220", // الخلفية
+        panel: "#111A2E", // الأسطح
+        line: "#22304A", // الخطوط والحدود
+        fg: "#E6EDF7", // النص الأساسي
+        muted: "#8A9BB8", // النص الثانوي
+        cyan: { DEFAULT: "#3FD0E0", deep: "#1E9FB0" }, // كل ما يُضغط عليه
+        sand: "#E0B46A", // التواريخ والإبرازات
       },
-      boxShadow: {
-        "glow-cyan": "0 0 40px rgba(6, 182, 212, 0.12)",
-        "glow-violet": "0 0 30px rgba(139, 92, 246, 0.18)",
-      },
-      keyframes: {
-        blink: { "0%, 100%": { opacity: "1" }, "50%": { opacity: "0" } },
-      },
-      animation: {
-        blink: "blink 1s step-end infinite",
-        "spin-slow": "spin 12s linear infinite",
+      fontFamily: {
+        kufi: ['"Reem Kufi"', '"IBM Plex Sans Arabic"', "sans-serif"],
+        sans: ['"IBM Plex Sans Arabic"', "system-ui", "sans-serif"],
+        mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
       },
     },
   },

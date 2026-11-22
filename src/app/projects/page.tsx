@@ -1,25 +1,17 @@
 import ProjectCard from "@/components/ProjectCard";
+import { Container, PageHeader } from "@/components/ui";
+import { PROJECTS } from "@/lib/config";
 
 export default function ProjectsPage() {
+  const list = PROJECTS.filter((p) => p.category === "web");
   return (
-    <div className="min-h-screen text-slate-200 px-4 sm:px-6 py-10 md:py-20 max-w-5xl mx-auto space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-2xl md:text-3xl font-bold text-white">المشاريع والأنظمة البرمجية</h1>
-        <p className="text-slate-400 text-sm">استعراض للمنصات الرقمية وهندسة الأنظمة التي تم تطويرها.</p>
+    <Container>
+      <PageHeader title="المشاريع البرمجية" lead="أنظمة ومنصات بنيتها من تحليل المتطلبات إلى قاعدة البيانات إلى الواجهة." />
+      <div className="space-y-6 pb-20">
+        {list.map((p, i) => (
+          <ProjectCard key={p.id} project={p} large={i === 0} />
+        ))}
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ProjectCard
-          title="منصة تربي (Trippie)"
-          category="سياحة رقمية وحجوزات"
-          description="منصة متكاملة لتخطيط الرحلات السياحية، وتوليد المسارات الذكية، وأتمتة إجراءات الحجز مع إدارة متقدمة لقواعد البيانات."
-          tags={["Node.js", "SQL Database", "Systems Analysis", "UI/UX", "APIs"]}
-          isHero={true}
-          demoUrl="#"
-          githubUrl="#"
-        />
-        {/* يمكنك إضافة مشاريعك الأخرى هنا */}
-      </div>
-    </div>
+    </Container>
   );
 }

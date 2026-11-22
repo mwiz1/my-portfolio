@@ -1,23 +1,17 @@
 import ProjectCard from "@/components/ProjectCard";
+import { Container, PageHeader } from "@/components/ui";
+import { PROJECTS } from "@/lib/config";
 
 export default function AnalyticsPage() {
+  const list = PROJECTS.filter((p) => p.category === "data");
   return (
-    <div className="min-h-screen text-slate-200 px-4 sm:px-6 py-10 md:py-20 max-w-5xl mx-auto space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-2xl md:text-3xl font-bold text-white">تحليل البيانات والمؤشرات الإحصائية</h1>
-        <p className="text-slate-400 text-sm">لوحات تحكم تفاعلية ودراسات بيانية لاستخلاص الرؤى والأرقام.</p>
+    <Container>
+      <PageHeader title="البيانات والتحليل" lead="نمذجة البيانات، واستعلامات SQL، وتحويل السجلات والأرقام إلى تقارير ولوحات تساعد على القرار." />
+      <div className="grid gap-6 pb-20 lg:grid-cols-2">
+        {list.map((p) => (
+          <ProjectCard key={p.id} project={p} />
+        ))}
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ProjectCard
-          title="لوحة مؤشرات الأداء والعمليات"
-          category="Data Visualization"
-          description="تحليل مجموعات بيانات ضخمة، نمذجة العلاقات، وتصميم داشبورد تفاعلي يبرز المقارنات والاتجاهات الإحصائية."
-          tags={["Power BI", "SQL", "Excel Data Modeling", "Data Analysis"]}
-          demoUrl="#"
-          githubUrl="#"
-        />
-      </div>
-    </div>
+    </Container>
   );
 }

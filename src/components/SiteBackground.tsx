@@ -44,7 +44,7 @@ function ThreeBackground({ mode }: { mode: "waves" | "stars" }) {
     container.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x050811, mode === "waves" ? 0.0022 : 0.0012);
+    scene.fog = new THREE.FogExp2(0x0b1220, mode === "waves" ? 0.0022 : 0.0012);
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
 
     const c1 = new THREE.Color(THEME.primaryColor);
@@ -201,7 +201,7 @@ export default function SiteBackground() {
   }, []);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-[#050811]">
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-[#0B1220]">
       {mode === "aurora" && <Aurora />}
       {(mode === "waves" || mode === "stars") && <ThreeBackground mode={mode} />}
       <div className="bg-vignette absolute inset-0" />

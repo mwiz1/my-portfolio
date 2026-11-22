@@ -14,11 +14,11 @@ export const THEME = {
   motionSpeed: 0.5,
 
   /** قوة ظهور الخلفية: 0.2 = خافتة جداً، 0.6 = متوازنة، 1 = واضحة */
-  intensity: 0.6,
+  intensity: 0.5,
 
   /** اللون الأساسي واللون الثانوي للخلفية (أي كود لون HEX) */
-  primaryColor: "#06b6d4", // سماوي
-  secondaryColor: "#8b5cf6", // بنفسجي
+  primaryColor: "#3FD0E0", // سماوي
+  secondaryColor: "#E0B46A", // رملي ذهبي
 
   /** على الجوال: استخدم خلفية أخف (aurora) لتوفير البطارية والسلاسة */
   lightBackgroundOnMobile: false,
