@@ -27,12 +27,12 @@ export default function FeedbackTerminal() {
 
   async function handleSubmit() {
     if (!valid || status === "loading") {
-      setError(`Message must be between ${MIN} and ${MAX} characters.`);
+      setError(`الرسالة لازم تكون بين ${MIN} و ${MAX} حرف.`);
       setStatus("error");
       return;
     }
     if (!supabase) {
-      setError("Terminal is offline: Supabase keys are missing in the environment variables.");
+      setError("الخدمة غير متصلة حالياً، حاول لاحقاً.");
       setStatus("error");
       return;
     }
@@ -46,7 +46,7 @@ export default function FeedbackTerminal() {
       .insert({ message: trimmed, category });
 
     if (dbError) {
-      setError("Could not send your message. Please try again in a moment.");
+      setError("تعذّر إرسال الرسالة، حاول مرة أخرى بعد لحظات.");
       setStatus("error");
       return;
     }
@@ -57,24 +57,24 @@ export default function FeedbackTerminal() {
   }
 
   return (
-    <section id="ama" className="mx-auto max-w-3xl px-6">
-      <div className="overflow-hidden rounded-2xl border border-cyber-border bg-cyber-card/70 shadow-glow-cyan backdrop-blur-xl">
-        <div className="flex items-center gap-2 border-b border-cyber-border bg-cyber-bg/60 px-4 py-3">
+    <section id="ama" className="mx-auto max-w-3xl">
+      <div className="overflow-hidden rounded-2xl border border-cyber-border bg-[#0a1020]/90 shadow-glow-cyan backdrop-blur-xl">
+        <div className="flex items-center gap-2 border-b border-cyber-border bg-[#050811]/80 px-4 py-3" dir="ltr">
           <span className="h-3 w-3 rounded-full bg-slate-600" aria-hidden />
           <span className="h-3 w-3 rounded-full bg-slate-600" aria-hidden />
           <span className="h-3 w-3 rounded-full bg-cyber-cyan" aria-hidden />
-          <h2 className="ms-3 font-mono text-sm text-slate-300">
+          <h2 className="ms-3 truncate font-mono text-xs text-slate-300 sm:text-sm">
             Anonymous_Terminal // Encrypted Feedback
           </h2>
         </div>
 
-        <div className="p-6">
-          <p className="font-mono text-sm text-cyber-cyan">
-            &gt; Send an anonymous message. No name, no login.
+        <div className="p-4 sm:p-6">
+          <p className="text-sm text-cyber-cyan">
+            &gt; أرسل رسالتك بدون اسم وبدون تسجيل دخول
             <span className="animate-blink">_</span>
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-2" role="radiogroup" aria-label="Message category" dir="rtl">
+          <div className="mt-5 flex flex-wrap gap-2" role="radiogroup" aria-label="نوع الرسالة" dir="rtl">
             {CATEGORIES.map((c) => (
               <button
                 key={c.id}
@@ -95,7 +95,7 @@ export default function FeedbackTerminal() {
           </div>
 
           <label htmlFor="msg" className="sr-only">
-            Your message
+            رسالتك
           </label>
           <textarea
             id="msg"
@@ -106,8 +106,9 @@ export default function FeedbackTerminal() {
               if (status === "error") setStatus("idle");
             }}
             rows={5}
-            placeholder="اكتب رسالتك هنا... / Write your message here..."
-            className="mt-4 w-full resize-none rounded-xl border border-cyber-border bg-cyber-bg/80 p-4 font-mono text-sm text-slate-100 placeholder:text-slate-600 focus:border-cyber-cyan/60 focus:outline-none focus:ring-2 focus:ring-cyber-cyan/20"
+            placeholder="اكتب رسالتك هنا..."
+            className="mt-4 block w-full resize-none appearance-none rounded-xl border border-slate-700 bg-[#03060d] p-4 text-base leading-relaxed text-white caret-cyan-400 placeholder:text-slate-500 focus:border-cyan-400/70 focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
+            style={{ WebkitTextFillColor: "#ffffff" }}
           />
 
           <div className="mt-3 flex items-center justify-between gap-4">
@@ -122,11 +123,11 @@ export default function FeedbackTerminal() {
             >
               {status === "loading" ? (
                 <>
-                  <Loader2 size={16} className="animate-spin" aria-hidden /> Sending
+                  <Loader2 size={16} className="animate-spin" aria-hidden /> جارٍ الإرسال
                 </>
               ) : (
                 <>
-                  <Send size={16} aria-hidden /> Send message
+                  <Send size={16} aria-hidden className="-scale-x-100" /> إرسال
                 </>
               )}
             </button>
@@ -142,7 +143,7 @@ export default function FeedbackTerminal() {
                   exit={{ opacity: 0 }}
                   className="flex items-center gap-2 font-mono text-sm text-emerald-400"
                 >
-                  <CheckCircle2 size={16} aria-hidden /> Message delivered. Thank you.
+                  <CheckCircle2 size={16} aria-hidden /> وصلت رسالتك، شكراً لك!
                 </motion.p>
               )}
               {status === "error" && (

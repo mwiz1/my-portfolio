@@ -3,10 +3,63 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   background-color: #050811;
   color: #f8fafc;
   direction: rtl;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* حقول الإدخال داكنة دائماً حتى لو كان الجوال على الوضع الفاتح */
+html {
+  color-scheme: dark;
+}
+
+/* كلمات طويلة (إيميلات، روابط) لا تخرج عن عرض الشاشة */
+p,
+span,
+li,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: anywhere;
+}
+
+/* طبقة تخفيف فوق الخلفية لتبقى النصوص مقروءة */
+.bg-vignette {
+  background:
+    radial-gradient(ellipse at 50% 0%, transparent 0%, rgba(5, 8, 17, 0.55) 70%),
+    linear-gradient(to bottom, rgba(5, 8, 17, 0) 60%, rgba(5, 8, 17, 0.85) 100%);
+}
+
+/* خلفية الشفق الهادئة (وضع aurora) */
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-4%, 3%, 0) scale(1.08);
+  }
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  animation: aurora-drift var(--aurora-duration, 40s) ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

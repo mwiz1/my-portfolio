@@ -14,10 +14,10 @@ import {
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen text-slate-200 px-6 py-24 max-w-4xl mx-auto space-y-12">
+    <div className="min-h-screen text-slate-200 px-4 sm:px-6 py-10 md:py-24 max-w-4xl mx-auto space-y-10 md:space-y-12">
       
       {/* هيدر السيرة الذاتية وزر التحميل */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-8 rounded-3xl bg-[#0c1324]/80 border border-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.1)] backdrop-blur-xl">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-5 sm:p-8 rounded-3xl bg-[#0c1324]/80 border border-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.1)] backdrop-blur-xl">
         <div className="space-y-2 text-right">
           <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-wide">
             عبد الملك علي الغامدي
@@ -27,7 +27,7 @@ export default function ResumePage() {
           </p>
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400 pt-2">
             <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-cyan-400" /> الرياض، المملكة العربية السعودية</span>
-            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-emerald-400" /> +966 50 051 2410</span>
+            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-emerald-400" /> <span dir="ltr">+966 50 051 2410</span></span>
             <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-violet-400" /> itbdamlk@gmail.com</span>
           </div>
         </div>
@@ -45,11 +45,11 @@ export default function ResumePage() {
 
       {/* 1. الملخص المهني Professional Summary */}
       <section className="space-y-4 text-right">
-        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
+        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-xs sm:text-sm font-bold border-b border-slate-800 pb-2">
           <Terminal className="w-4 h-4" />
           <span>PROFESSIONAL SUMMARY // الملخص المهني</span>
         </div>
-        <div className="p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 backdrop-blur-md">
+        <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 backdrop-blur-md sm:p-6">
           <p className="text-slate-300 leading-relaxed text-sm md:text-base font-normal">
             Information Technology graduate targeting software systems and IT operations roles, with hands-on backend development experience in Node.js and JavaScript. Skilled in relational database design, system integration, and data modeling, with working knowledge of networking protocols, virtualization, and information security principles. Experienced in Agile delivery and technical project tracking, and known for analyzing operational workflows to deliver reliable digital solutions.
           </p>
@@ -58,11 +58,11 @@ export default function ResumePage() {
 
       {/* 2. المهارات التقنية Technical Skills */}
       <section className="space-y-4 text-right">
-        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
+        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-xs sm:text-sm font-bold border-b border-slate-800 pb-2">
           <Layers className="w-4 h-4" />
           <span>TECHNICAL SKILLS // المهارات والأدوات</span>
         </div>
-        <div className="flex flex-wrap gap-2.5 p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 backdrop-blur-md">
+        <div className="flex flex-wrap gap-2.5 p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 backdrop-blur-md sm:p-6">
           {[
             "JavaScript", "Node.js", "Database Management", "SQL & Relational Databases",
             "System Architecture", "IT Infrastructure", "TCP/IP Networking", "Virtual Machines",
@@ -82,14 +82,14 @@ export default function ResumePage() {
 
       {/* 3. الخبرة العملية والمشاريع Practical Experience & Projects */}
       <section className="space-y-6 text-right">
-        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
+        <div className="flex items-center gap-2.5 text-cyan-400 font-mono text-xs sm:text-sm font-bold border-b border-slate-800 pb-2">
           <Briefcase className="w-4 h-4" />
           <span>PRACTICAL EXPERIENCE & PROJECTS // المشاريع والأنظمة</span>
         </div>
 
         {/* Project 1 */}
-        <div className="p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 space-y-4 hover:border-cyan-500/40 transition-colors">
-          <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+        <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 space-y-4 hover:border-cyan-500/40 transition-colors">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/60 pb-3">
             <h3 className="text-lg font-bold text-white">Tarbi Integrated Digital System Project</h3>
             <span className="text-xs font-mono text-cyan-400 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Full-Stack Solution</span>
           </div>
@@ -103,8 +103,8 @@ export default function ResumePage() {
         </div>
 
         {/* Project 2 */}
-        <div className="p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 space-y-4 hover:border-violet-500/40 transition-colors">
-          <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+        <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 space-y-4 hover:border-violet-500/40 transition-colors">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/60 pb-3">
             <h3 className="text-lg font-bold text-white">Database Systems & IT Operations Lab</h3>
             <span className="text-xs font-mono text-violet-400 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20">Data & Systems</span>
           </div>
@@ -119,8 +119,8 @@ export default function ResumePage() {
       {/* 4. التعليم والشهادات واللغات في شبكة جانبية */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-right">
         {/* Education */}
-        <section className="space-y-4 p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80">
-          <div className="flex items-center gap-2 text-cyan-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
+        <section className="space-y-4 p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80">
+          <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs sm:text-sm font-bold border-b border-slate-800 pb-2">
             <GraduationCap className="w-4 h-4" />
             <span>EDUCATION // التعليم</span>
           </div>
@@ -132,7 +132,7 @@ export default function ResumePage() {
         </section>
 
         {/* Certifications */}
-        <section className="space-y-4 p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80">
+        <section className="space-y-4 p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80">
           <div className="flex items-center gap-2 text-violet-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
             <Award className="w-4 h-4" />
             <span>CERTIFICATIONS // الشهادات الاحترافية</span>
@@ -150,12 +150,12 @@ export default function ResumePage() {
         </section>
 
         {/* Languages */}
-        <section className="space-y-4 p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 md:col-span-2">
+        <section className="space-y-4 p-4 sm:p-6 rounded-2xl bg-[#0c1324]/50 border border-slate-800/80 md:col-span-2">
           <div className="flex items-center gap-2 text-emerald-400 font-mono text-sm font-bold border-b border-slate-800 pb-2">
             <Languages className="w-4 h-4" />
             <span>LANGUAGES // اللغات</span>
           </div>
-          <div className="flex gap-8 text-sm">
+          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
             <div className="flex items-center gap-2">
               <span className="text-white font-medium">العربية:</span>
               <span className="text-slate-400 text-xs font-mono">اللغة الأم (Native)</span>
